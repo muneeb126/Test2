@@ -23,22 +23,21 @@ pipeline {
 
                 sh 'mvn --version'
             }
-            post {
-
-                success {
-
-                    // this is used to send a mail when job is successful
-
-                    script {
-
-                        def content = "Email message that should be in body part of email"
-
-                        emailext attachLog: true, body: aka, contentType: 'text/html', subject: success, from: 'acb@email.com', to: "muhammad.zafar@mastercard.com"
-
-                    }
-
-                }
-            }
+    post {
+// Always runs. And it runs before any of the other post conditions.
+        success {
+            mail(from: "bob@example.com",
+                    to: "steve@example.com",
+                    subject: "That build passed.",
+                    body: "Nothing to see here")
+        }
+        failure {
+            mail(from: "bob@example.com",
+                    to: "steve@example.com",
+                    subject: "That build failed!",
+                    body: "Nothing to see here")
+        }
+    }
         }
     }
 }
