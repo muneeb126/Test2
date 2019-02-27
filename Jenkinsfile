@@ -23,7 +23,6 @@ pipeline {
 
      sh 'mvn --version' 
    }
-   }
           post{
                 
                 success{
@@ -39,3 +38,4 @@ pipeline {
   }
     
 }
+          }
