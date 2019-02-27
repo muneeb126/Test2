@@ -6,29 +6,16 @@ pipeline {
         maven 'M3'
         jdk 'JDK 1.8'
     }
-    stages {
-        stage ('Initialize') {
-            steps {
-                bat '''
-                    echo "PATH = %PATH%"
-                    echo "M2_HOME = %M2_HOME%"
-                '''
-            }
-        }
+  stage("Build"){
 
-        stage ('Build') {
-            steps {
-                    bat 'cd NumberGenerator & mvn install'
-            }
-             post {
-                success {
-                    junit 'NumberGenerator/target/surefire-reports/*.xml'
-                        }
-                 }
-               
+   steps{
 
-           
-            }
-        }
+   // Running basic maven command , you can pass argument to this command also like DskipTests exec:java -Dexec.args="some value"
+
+     mvn clean install 
+
+   }
+
+  }
     
 }
