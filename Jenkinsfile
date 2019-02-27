@@ -33,7 +33,7 @@ pipeline {
 
                         def content = "Email message that should be in body part of email"
 
-                        emailext attachLog: true, body: content, contentType: 'text/html', subject: mailSubject, from: 'acb@email.com', to: "muhammad.zafar@mastercard.com"
+                        emailext attachLog: true, body: content, contentType: 'text/html', subject: success, from: 'acb@email.com', to: "muhammad.zafar@mastercard.com"
 
                     }
 
