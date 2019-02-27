@@ -6,14 +6,15 @@ pipeline {
         maven 'M3'
         jdk 'JDK 1.8'
     }
-  stage("Build"){
+    stages {
+    stage("Build"){
 
    steps{
 
    // Running basic maven command , you can pass argument to this command also like DskipTests exec:java -Dexec.args="some value"
 
      mvn clean install 
-
+   }
    }
 
   }
