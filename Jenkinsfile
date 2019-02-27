@@ -1,11 +1,11 @@
 pipeline {
-      options{    // This is used for log rotation
+    options {    // This is used for log rotation
 
-   buildDiscarder(logRotator(numToKeepStr: '5'))
+        buildDiscarder(logRotator(numToKeepStr: '5'))
 
-   disableConcurrentBuilds()
+        disableConcurrentBuilds()
 
-  }
+    }
 
     agent {
         label "windows"
@@ -15,29 +15,30 @@ pipeline {
         jdk 'JDK 1.8'
     }
     stages {
-    stage("Build"){
+        stage("Build") {
 
-   steps{
+            steps {
 
-   // Running basic maven command , you can pass argument to this command also like DskipTests exec:java -Dexec.args="some value"
+                // Running basic maven command , you can pass argument to this command also like DskipTests exec:java -Dexec.args="some value"
 
-     sh 'mvn --version' 
-   }
-          post{
-                
-                success{
+                sh 'mvn --version'
+            }
+            post {
 
-  // this is used to send a mail when job is successful
+                success {
 
-   script{
+                    // this is used to send a mail when job is successful
 
-    def content = "Email message that should be in body part of email"
+                    script {
 
-    emailext attachLog: true, body: content, contentType: 'text/html', subject: mailSubject, from: 'sender emailid', to: "reciever emailid"
+                        def content = "Email message that should be in body part of email"
 
-  }
-    
+                        emailext attachLog: true, body: content, contentType: 'text/html', subject: mailSubject, from: 'sender emailid', to: "reciever emailid"
+
+                    }
+
+                }
+            }
+        }
+    }
 }
-          }
-    }
-    }
