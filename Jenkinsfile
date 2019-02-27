@@ -22,6 +22,7 @@ pipeline {
    // Running basic maven command , you can pass argument to this command also like DskipTests exec:java -Dexec.args="some value"
 
      sh 'mvn --version' 
+        'mvn sonar:sonar'
    }
    }
 stage("Sonar analysis"){
