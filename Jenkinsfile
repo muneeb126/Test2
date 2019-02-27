@@ -1,4 +1,12 @@
 pipeline {
+      options{    // This is used for log rotation
+
+   buildDiscarder(logRotator(numToKeepStr: '5'))
+
+   disableConcurrentBuilds()
+
+  }
+
     agent {
         label "windows"
     }
