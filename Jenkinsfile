@@ -3,7 +3,7 @@ pipeline {
    buildDiscarder(logRotator(numToKeepStr: '3'))
    disableConcurrentBuilds()
     }
-    agent {
+agent {
         label "windows"
     }
     tools {
@@ -12,14 +12,10 @@ pipeline {
     }
     stages {
         stage("Build") {
-
             steps {
-
                 // Running basic maven command , you can pass argument to this command also like DskipTests exec:java -Dexec.args="some value"
-
                 sh 'mvn --version'
-            }
-                    
+            }                  
         }
     }
 }
