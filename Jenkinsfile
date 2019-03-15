@@ -1,9 +1,6 @@
-
-   options {    // This is used for log rotation
-
-        buildDiscarder(logRotator(numToKeepStr: '3'))
-
-        disableConcurrentBuilds()
+options {    // This is used for log rotation
+   buildDiscarder(logRotator(numToKeepStr: '3'))
+   disableConcurrentBuilds()
 
     }
 pipeline {
